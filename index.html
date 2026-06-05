@@ -783,7 +783,7 @@
                     seed: Math.random() * 100
                 });
             }
-
+// TG @VefierStudio
             const updateMouse = (e) => {
                 mouseX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
                 mouseY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
@@ -838,7 +838,7 @@
             const intersects = raycaster.intersectObjects(planets);
             if (intersects.length > 0) focusPlanet(intersects[0].object);
         }
-
+// TG @VefierStudio
         window.addEventListener('click', (e) => {
             if (e.target.tagName === 'BUTTON' || e.target.closest('#info-card') || e.target.closest('#social-container')) return;
             handleSelect(e.clientX, e.clientY);
@@ -863,14 +863,14 @@
             document.getElementById('social-container').className = "social-container pos-bottom-left";
             playPlanetSound(data.typeTex);
 
-            // На ПК (экраны шире 768px) мы делаем зум сильнее (multiplier 2.1 вместо 3.4), чтобы планета была КРУПНОЙ
+            // TG @VefierStudio
             const offsetMultiplier = window.innerWidth < 768 ? 3.4 : 2.1;
             gsap.to(camera.position, {
                 x: planetMesh.position.x, y: planetMesh.position.y, z: planetMesh.position.z + (data.radius * offsetMultiplier),
                 duration: 1.5, ease: "power3.out", onUpdate: () => { camera.lookAt(planetMesh.position); }
             });
         }
-
+// TG @VefierStudio
         function resetCamera() {
             playClickSound(); stopPlanetSound();
             currentSelected = null; document.getElementById('info-card').classList.remove('active');
@@ -889,7 +889,7 @@
             document.getElementById('social-container').className = "social-container pos-top-right";
             gsap.to(camera.position, { x: 0, y: 10, z: 45, duration: 2, ease: "power2.inOut", onUpdate: () => { camera.lookAt(0, 0, 0); } });
         }
-
+// TG @VefierStudio
         const startInteract = (clientX, clientY) => { if (currentSelected) { isInteracting = true; prevMousePos = { x: clientX, y: clientY }; } };
         window.addEventListener('mousedown', (e) => startInteract(e.clientX, e.clientY));
         window.addEventListener('touchstart', (e) => { if(e.touches.length > 0) startInteract(e.touches[0].clientX, e.touches[0].clientY); }, {passive: true});
